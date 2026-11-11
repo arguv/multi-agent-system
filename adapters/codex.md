@@ -1,6 +1,6 @@
 # OpenAI Codex adapter
 
-Use the root AGENTS.md as the discovery entry where supported. Explicitly read the assigned role pair and workflow; nested role files are not assumed to load automatically.
+Use the root AGENTS.md as the repository discovery entry. It assigns the coordinating chat to the Orchestrator and instructs it to read its role pair and workflow automatically. Users only need to describe their project, then send work start after requirements collection. Nested role files are loaded by the agent following the root instructions; they are not assumed to load automatically. Explicit worker assignments override the default Orchestrator role.
 
 Canonical entry: `../AGENTS.md`; workflow: `../workflow.md`; roles: `../agents/`.
 Read the active role's instructions and skills before acting, announce the stack, and preserve both user lifecycle gates. Adapter configuration must not change the core workflow. If context loading is unavailable, report the limitation rather than claiming the role files were read.

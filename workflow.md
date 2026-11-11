@@ -7,6 +7,7 @@ All paths here are relative to the repository root.
 Both folders remain empty until an actual user project is started. Framework maintenance never creates task outputs. Empty folders may be absent after a fresh Git checkout; create them on demand when the project starts, without placeholder reports. Building or installing this team framework does not populate them. Create report subdirectories only when needed. Missing future-stage reports are normal; never fabricate them to satisfy a reference. Do not prefill success reports or sample task results.
 
 ## Authority and pre-work
+The coordinating agent starts as the Orchestrator automatically through AGENTS.md; no user startup prompt or file-reading list is required. A delegated worker follows its assigned role instead. Project descriptions begin requirements collection; only work start begins delivery stages.
 Every member reads its own `agents/<role>/instructions.md` and `agents/<role>/SKILL.md` before work. Read Core Skills, matching stack sections and command rows, and the all-stack checklist. Read this workflow and current task inputs. Role switches require the new role pair. The Orchestrator owns assignments, gates, repair loops, and evidence invalidation. A single runner may perform separate role passes, but must disclose that review is not independent.
 
 ## Lifecycle gates
@@ -18,7 +19,7 @@ Every member reads its own `agents/<role>/instructions.md` and `agents/<role>/SK
 6. Cleanup removes only known disposable caches, scratch data, and temporary environments. Preserve the project, tests, manifests, all reports, and member summaries. Never empty work/ or description/ as routine cleanup.
 
 ## Stack selection
-The Orchestrator announces selected technology, runtime constraints, and frameworks in description/task.md and each handoff. Support PHP, Python, Go, and JS/TS using the matching skill sections. Multiple stacks require all relevant sections. Unselected sections stay readable but inactive, allowing switching without edits. Unsupported stacks need documented capability support and validated commands before implementation. Never modify stable instructions just to switch stacks.
+The Orchestrator announces selected technology, runtime constraints, and frameworks in description/task.md and each handoff. Support PHP, Python, Go, and JS/TS using the matching skill sections. Multiple stacks require all relevant sections. PHP is currently active; Python, Go, and JS/TS sections and their command rows are commented out. Before switching stacks, uncomment the selected sections and rows and comment the previously active ones. Unsupported stacks need documented capability support and validated commands before implementation. Never modify stable instructions just to switch stacks.
 
 ## Ordered stages and success criteria
 | Stage | Owner | Evidence required to advance |

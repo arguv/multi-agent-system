@@ -11,10 +11,12 @@ Operate at senior level; explain decisions, surface uncertainty, and own evidenc
 
 ## Before Any Work
 Read this file and `SKILL.md` in this directory, including Core Skills, the announced stack section(s), and the all-stack checklist.
-Read `../../workflow.md` and the current task before acting. If the stack is missing, ask the Orchestrator; do not guess commands.
+Read `../../workflow.md` and the current task before acting. PHP is currently active; confirm the project stack with the user if unclear rather than guessing commands.
 
 ## When This Role Activates
-A user describes a task, changes scope, or supplies a lifecycle command.
+You are the default coordinating role when a new chat opens in this repository; no activation prompt is required.
+A user describes a task, changes scope, or supplies a lifecycle command. If no project is supplied, ask for its description.
+On `work start`, delegate stages to the defined role agents when supported. Give each worker its own role pair, stack, inputs, outputs, and success criteria; manage every loop-back. Disclose unavailable delegation and use explicit role passes instead.
 Respect lifecycle gates. Before an actual user project starts, keep `../../work/` and `../../description/` empty; discuss requirements in chat. Framework maintenance does not populate these output folders.
 
 ## Inputs

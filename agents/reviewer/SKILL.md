@@ -11,8 +11,9 @@ description: "Senior Code Reviewer stack-specific capabilities. Covers PHP (PHPU
 - Follow `../../workflow.md`; report evidence and blockers without inventing results.
 - Build source, tests, and scaffolding in `../../work/`. Write all plans, reports, logs, and summaries to `../../description/`. Keep both folders empty before an actual project starts; framework maintenance must not generate project outputs.
 - Commands below are examples run from the target root (`../../work/`), after dependencies are installed. Prefer existing scripts and pinned tools. Do not install every supporting tool.
-- All stack sections remain readable for switching without edits. Unselected sections are inactive; no role executes them. Unknown stacks require a documented capability extension before proceeding.
+- PHP is the active application stack. Python, Go, JS/TS, and framework-maintenance Markdown sections are preserved inside HTML comments and must not be used for this PHP project. To switch later, uncomment the selected section and command row, and comment the previously active ones. Unknown stacks require a documented capability extension before proceeding.
 
+<!-- Inactive: Markdown
 ## Markdown Stack
 ### Environment
 Plain UTF-8 Markdown; no application runtime or dependency installation is required.
@@ -24,6 +25,7 @@ A text editor and dependency-free structural checks. Read-through scenarios vali
 - [ ] Canonical content remains portable and instructions remain stack-independent.
 - [ ] Role contracts and lifecycle scenarios are internally consistent.
 - [ ] Structural checks and manual document review have recorded outcomes.
+-->
 
 ## PHP Stack
 ### Environment
@@ -42,6 +44,7 @@ For manual QA, exercise the running service, CLI, or UI and record runtime and p
 - [ ] Commands exist in the target repository and pass, or blockers are reported.
 - [ ] Relevant logic, integration boundaries, and failure behavior have evidence.
 
+<!-- Inactive: Python
 ## Python Stack
 ### Environment
 Python 3.10+; use repository constraints. Run `python -m venv .venv`, activate with `. .venv/bin/activate` (POSIX), then `python -m pip install -r requirements.txt`.
@@ -58,7 +61,9 @@ For manual QA, exercise the running service, CLI, or UI and record runtime and p
 - [ ] Runtime and dependency versions match the accepted environment.
 - [ ] Commands exist in the target repository and pass, or blockers are reported.
 - [ ] Relevant logic, integration boundaries, and failure behavior have evidence.
+-->
 
+<!-- Inactive: Go
 ## Go Stack
 ### Environment
 Go 1.21+; follow the go.mod directive. Run `go mod download` and `go build ./...`.
@@ -93,7 +98,9 @@ func TestNormalize(t *testing.T) {
 }
 ```
 Illustrative structure: replace `Normalize` with the project's real API and import `testing`.
+-->
 
+<!-- Inactive: JS/TS
 ## JS/TS Stack
 ### Environment
 Use the repository Node.js version and package manager. With a package-lock.json use `npm ci`; for a new npm project use `npm install` and retain the lock file.
@@ -110,14 +117,18 @@ For manual QA, exercise the running service, CLI, or UI and record runtime and p
 - [ ] Runtime and dependency versions match the accepted environment.
 - [ ] Commands exist in the target repository and pass, or blockers are reported.
 - [ ] Relevant logic, integration boundaries, and failure behavior have evidence.
+-->
 
 ## Tooling Commands (quick reference)
 | Stack | Install deps | Run tests | Lint / check |
 | --- | --- | --- | --- |
 | PHP | `composer install` | `vendor/bin/phpunit` | configured PHPStan / PHP_CodeSniffer commands |
+
+<!-- Inactive stack commands
 | Python | `python -m pip install -r requirements.txt` | `python -m pytest` | `python -m ruff check .` if installed |
 | Go | `go mod download` | `go test ./...` | `go vet ./...`; `gofmt -l .` |
 | JS/TS | `npm ci` with lock file | `npm test -- --runInBand` for Jest; `npx vitest run` for Vitest | configured lint and typecheck scripts |
+-->
 
 ## Quality Checklist (all stacks)
 - [ ] Own instructions and matching stack skills read before acting.
