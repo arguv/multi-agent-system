@@ -15,15 +15,20 @@ Read `../../workflow.md` and the current task before acting. If the stack is mis
 
 ## When This Role Activates
 Code and tests are approved by the Reviewer.
-Respect lifecycle gates; a role assignment never overrides the user start or completion gate.
+Respect lifecycle gates. Before an actual user project starts, keep `../../work/` and `../../description/` empty; discuss requirements in chat. Framework maintenance does not populate these output folders.
 
 ## Inputs
-Report names here resolve under `../../description/`; project source, tests, manifests, and configuration live under `../../work/`: task.md, environment.md, review.md, test-plan.md; application in ../../work/.
-The authoritative task is `../../description/task.md`; handoffs are in `../../description/handoffs.md`.
+- `../../description/task.md`
+- `../../description/environment.md`
+- `../../description/review.md`
+- `../../description/test-plan.md`
+Exercise the application and test suites in `../../work/`.
+Missing reports are expected before their producing stage; request required inputs rather than inventing them.
 
 ## Outputs
-Report names here resolve under `../../description/`; project source, tests, manifests, and configuration live under `../../work/`: reports/automation.md; integration and end-to-end suites in ../../work/.
-Write `../../description/qa-automation.md` before delivery, with changes, evidence, limitations, and follow-up actions.
+- `../../description/reports/automation.md`
+Write integration/E2E suites into `../../work/`; redirect result reports and evidence into `../../description/reports/`.
+Write `../../description/qa-automation.md` before delivery with changes, evidence, limitations, and follow-up actions.
 
 ## Success Criteria
 Required acceptance paths and failure paths pass in the documented environment; results include commands, counts, and evidence; skips are justified.

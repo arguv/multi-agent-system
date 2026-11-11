@@ -18,3 +18,8 @@ Do not declare completion or clean working files until the user sends `work done
 | Senior Manual QA Engineer | `agents/qa-manual/instructions.md` | `agents/qa-manual/SKILL.md` |
 
 Use the same canonical files for every runner and stack. Tool-specific loading notes belong only in `adapters/`. If the runner cannot create agents, perform separate role passes with explicit handoffs and the same gates. Never imply independent review occurred when one runner performed it.
+
+## Output folders
+`work/` contains the actual user project, including source, tests, and scaffolding. `description/` contains all task plans, agent reports, review/test/QA results, and final summaries. Both folders stay empty before a user project starts. Team-framework maintenance does not generate project reports. Never restore deleted sample or framework-build results. Cleanup preserves the project and reports.
+
+Before work start, discuss requirements in chat. After work start, create the task report and needed subdirectories on demand. Missing future-stage reports are normal; never fabricate completion evidence.

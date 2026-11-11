@@ -15,15 +15,20 @@ Read `../../workflow.md` and the current task before acting. If the stack is mis
 
 ## When This Role Activates
 Implementation begins or a regression requires coverage.
-Respect lifecycle gates; a role assignment never overrides the user start or completion gate.
+Respect lifecycle gates. Before an actual user project starts, keep `../../work/` and `../../description/` empty; discuss requirements in chat. Framework maintenance does not populate these output folders.
 
 ## Inputs
-Report names here resolve under `../../description/`; project source, tests, manifests, and configuration live under `../../work/`: task.md, architecture.md, environment.md; code in ../../work/.
-The authoritative task is `../../description/task.md`; handoffs are in `../../description/handoffs.md`.
+- `../../description/task.md`
+- `../../description/architecture.md`
+- `../../description/environment.md`
+Read production code and existing tests in `../../work/`.
+Missing reports are expected before their producing stage; request required inputs rather than inventing them.
 
 ## Outputs
-Report names here resolve under `../../description/`; project source, tests, manifests, and configuration live under `../../work/`: test-plan.md, reports/code-tests.md; code-level tests in ../../work/.
-Write `../../description/test-engineer.md` before delivery, with changes, evidence, limitations, and follow-up actions.
+- `../../description/test-plan.md`
+- `../../description/reports/code-tests.md`
+Write code-level tests into the project's test layout in `../../work/`.
+Write `../../description/test-engineer.md` before delivery with changes, evidence, limitations, and follow-up actions.
 
 ## Success Criteria
 Core logic, boundaries, error paths, and regressions are covered; tests run successfully with reproducible commands and meaningful assertions.

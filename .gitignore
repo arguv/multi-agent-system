@@ -38,4 +38,5 @@ coverage.out
 Thumbs.db
 
 # Keep work evidence, delivered code, summaries, and dependency lock files tracked.
-# Cleanup of work/ follows workflow.md after user acceptance.
+# work/ holds the project; description/ holds all reports. Neither folder is ignored.
+# Cleanup follows workflow.md and preserves both sets of delivered outputs.

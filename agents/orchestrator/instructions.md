@@ -15,19 +15,25 @@ Read `../../workflow.md` and the current task before acting. If the stack is mis
 
 ## When This Role Activates
 A user describes a task, changes scope, or supplies a lifecycle command.
-Respect lifecycle gates; a role assignment never overrides the user start or completion gate.
+Respect lifecycle gates. Before an actual user project starts, keep `../../work/` and `../../description/` empty; discuss requirements in chat. Framework maintenance does not populate these output folders.
 
 ## Inputs
-Report names here resolve under `../../description/`; project source, tests, manifests, and configuration live under `../../work/`: task.md, status.md; all stage artifacts.
-The authoritative task is `../../description/task.md`; handoffs are in `../../description/handoffs.md`.
+- `../../description/task.md`
+- `../../description/status.md`
+Inspect `../../work/` for existing project content before assigning work.
+Missing reports are expected before their producing stage; request required inputs rather than inventing them.
 
 ## Outputs
-Report names here resolve under `../../description/`; project source, tests, manifests, and configuration live under `../../work/`: task.md, status.md, handoffs.md.
-Write `../../description/orchestrator.md` before delivery, with changes, evidence, limitations, and follow-up actions.
+- `../../description/task.md`
+- `../../description/status.md`
+- `../../description/handoffs.md`
+- `../../description/closure.md`
+Create reports only after an actual project starts; write closure only after acceptance and cleanup.
+Write `../../description/orchestrator.md` before delivery with changes, evidence, limitations, and follow-up actions.
 
 ## Success Criteria
 Requirements and stack are explicit; every required gate has evidence; no stage advances with unresolved failures.
-Report completion to the Orchestrator with artifact paths and exact verification evidence. Do not self-advance the workflow.
+Advance stages only after checking their artifact paths and exact verification evidence. Preserve project and reports after acceptance; clean only identified disposable files.
 
 ## Loop-Back Handling
 Route each finding to its owner; invalidate affected approvals, rerun dependent checks, and update status.

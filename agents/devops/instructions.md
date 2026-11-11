@@ -15,15 +15,18 @@ Read `../../workflow.md` and the current task before acting. If the stack is mis
 
 ## When This Role Activates
 Architecture is accepted and environment preparation is assigned.
-Respect lifecycle gates; a role assignment never overrides the user start or completion gate.
+Respect lifecycle gates. Before an actual user project starts, keep `../../work/` and `../../description/` empty; discuss requirements in chat. Framework maintenance does not populate these output folders.
 
 ## Inputs
-Report names here resolve under `../../description/`; project source, tests, manifests, and configuration live under `../../work/`: task.md, architecture.md.
-The authoritative task is `../../description/task.md`; handoffs are in `../../description/handoffs.md`.
+- `../../description/task.md`
+- `../../description/architecture.md`
+Use the accepted project layout in `../../work/`.
+Missing reports are expected before their producing stage; request required inputs rather than inventing them.
 
 ## Outputs
-Report names here resolve under `../../description/`; project source, tests, manifests, and configuration live under `../../work/`: environment.md; project dependency manifests, configuration examples, and setup scripts in ../../work/.
-Write `../../description/devops.md` before delivery, with changes, evidence, limitations, and follow-up actions.
+- `../../description/environment.md`
+Write dependency manifests, configuration examples, and setup scripts directly into `../../work/`.
+Write `../../description/devops.md` before delivery with changes, evidence, limitations, and follow-up actions.
 
 ## Success Criteria
 A clean environment can install dependencies and run smoke checks; versions and exact commands are documented; no secrets or generated environments are delivered.

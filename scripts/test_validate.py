@@ -56,6 +56,30 @@ class ValidatorTests(unittest.TestCase):
         self.edit('agents/orchestrator/instructions.md', '../../workflow.md', '../../missing/workflow.md')
         self.assertTrue(any('unresolved reference' in e for e in validate(self.root)))
 
+    def test_legacy_report_path_rejected(self):
+        self.edit('agents/reviewer/instructions.md', '../../description/review.md', '../../work/review.md')
+        self.assertTrue(any('obsolete project/report layout' in e for e in validate(self.root)))
+
+    def test_legacy_staging_path_rejected(self):
+        self.edit('agents/engineer/SKILL.md', '../../work/', '../../work/delivery/')
+        self.assertTrue(any('obsolete project/report layout' in e for e in validate(self.root)))
+
+    def test_missing_output_directories_are_valid_before_start(self):
+        (self.root / 'work').rmdir()
+        (self.root / 'description').rmdir()
+        self.assertEqual(validate(self.root), [])
+        self.assertFalse((self.root / 'work').exists())
+        self.assertFalse((self.root / 'description').exists())
+
+    def test_validation_leaves_output_folders_empty(self):
+        self.assertEqual(validate(self.root), [])
+        self.assertEqual(list((self.root / 'work').iterdir()), [])
+        self.assertEqual(list((self.root / 'description').iterdir()), [])
+
+    def test_adapter_requires_folder_contract(self):
+        self.edit('adapters/codex.md', '../description/', '../missing/')
+        self.assertTrue(any('missing project/report folder contract' in e for e in validate(self.root)))
+
 
 if __name__ == '__main__':
     unittest.main()

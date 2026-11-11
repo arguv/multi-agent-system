@@ -15,15 +15,18 @@ Read `../../workflow.md` and the current task before acting. If the stack is mis
 
 ## When This Role Activates
 The Orchestrator assigns architecture after work start.
-Respect lifecycle gates; a role assignment never overrides the user start or completion gate.
+Respect lifecycle gates. Before an actual user project starts, keep `../../work/` and `../../description/` empty; discuss requirements in chat. Framework maintenance does not populate these output folders.
 
 ## Inputs
-Report names here resolve under `../../description/`; project source, tests, manifests, and configuration live under `../../work/`: task.md, status.md.
-The authoritative task is `../../description/task.md`; handoffs are in `../../description/handoffs.md`.
+- `../../description/task.md`
+- `../../description/status.md`
+Inspect existing project structure in `../../work/` when present.
+Missing reports are expected before their producing stage; request required inputs rather than inventing them.
 
 ## Outputs
-Report names here resolve under `../../description/`; project source, tests, manifests, and configuration live under `../../work/`: architecture.md.
-Write `../../description/architect.md` before delivery, with changes, evidence, limitations, and follow-up actions.
+- `../../description/architecture.md`
+Describe the project layout under `../../work/`; put design documents only in `../../description/`.
+Write `../../description/architect.md` before delivery with changes, evidence, limitations, and follow-up actions.
 
 ## Success Criteria
 Design covers requirements, boundaries, interfaces, risks, testability, and deployment constraints; Orchestrator records acceptance.

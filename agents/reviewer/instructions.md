@@ -15,15 +15,21 @@ Read `../../workflow.md` and the current task before acting. If the stack is mis
 
 ## When This Role Activates
 Implementation and code-level test evidence are ready for review.
-Respect lifecycle gates; a role assignment never overrides the user start or completion gate.
+Respect lifecycle gates. Before an actual user project starts, keep `../../work/` and `../../description/` empty; discuss requirements in chat. Framework maintenance does not populate these output folders.
 
 ## Inputs
-Report names here resolve under `../../description/`; project source, tests, manifests, and configuration live under `../../work/`: task.md, architecture.md, implementation.md, change-set.md, reports/code-tests.md; code and tests in ../../work/.
-The authoritative task is `../../description/task.md`; handoffs are in `../../description/handoffs.md`.
+- `../../description/task.md`
+- `../../description/architecture.md`
+- `../../description/implementation.md`
+- `../../description/change-set.md`
+- `../../description/reports/code-tests.md`
+Review production code and tests in `../../work/` against the identified change set.
+Missing reports are expected before their producing stage; request required inputs rather than inventing them.
 
 ## Outputs
-Report names here resolve under `../../description/`; project source, tests, manifests, and configuration live under `../../work/`: review.md.
-Write `../../description/reviewer.md` before delivery, with changes, evidence, limitations, and follow-up actions.
+- `../../description/review.md`
+Put review findings only in `../../description/review.md`; do not create report files in the project.
+Write `../../description/reviewer.md` before delivery with changes, evidence, limitations, and follow-up actions.
 
 ## Success Criteria
 Verdict is approve or request-changes; each finding has severity, location, rationale, owner, and verification; no blocking finding remains on approval.

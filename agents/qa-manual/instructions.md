@@ -15,15 +15,20 @@ Read `../../workflow.md` and the current task before acting. If the stack is mis
 
 ## When This Role Activates
 The Orchestrator records manual QA as required after automated QA passes.
-Respect lifecycle gates; a role assignment never overrides the user start or completion gate.
+Respect lifecycle gates. Before an actual user project starts, keep `../../work/` and `../../description/` empty; discuss requirements in chat. Framework maintenance does not populate these output folders.
 
 ## Inputs
-Report names here resolve under `../../description/`; project source, tests, manifests, and configuration live under `../../work/`: task.md, architecture.md, reports/automation.md; application in ../../work/.
-The authoritative task is `../../description/task.md`; handoffs are in `../../description/handoffs.md`.
+- `../../description/task.md`
+- `../../description/architecture.md`
+- `../../description/reports/automation.md`
+Exercise the application in `../../work/`.
+Missing reports are expected before their producing stage; request required inputs rather than inventing them.
 
 ## Outputs
-Report names here resolve under `../../description/`; project source, tests, manifests, and configuration live under `../../work/`: manual-qa/plan.md, manual-qa/results/report.md.
-Write `../../description/qa-manual.md` before delivery, with changes, evidence, limitations, and follow-up actions.
+- `../../description/manual-qa/plan.md`
+- `../../description/manual-qa/results/report.md`
+Keep executable helpers and fixtures, when needed, in `../../work/manual-qa/`; store plans and results only in `../../description/manual-qa/`.
+Write `../../description/qa-manual.md` before delivery with changes, evidence, limitations, and follow-up actions.
 
 ## Success Criteria
 Required scenarios are executed with observations and evidence; defects are resolved and retested; explicit sign-off is recorded.

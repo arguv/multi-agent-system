@@ -9,6 +9,7 @@ description: "DevOps Engineer stack-specific capabilities. Covers PHP (PHPUnit, 
 - Before work, read `instructions.md` and this section, then only the announced stack section(s), command row(s), and the all-stack checklist.
 - Prepare isolated, reproducible environments, dependency manifests, lock files where appropriate, configuration examples, and health checks. Record setup commands and version constraints. Never commit or push; never include credentials.
 - Follow `../../workflow.md`; report evidence and blockers without inventing results.
+- Build source, tests, and scaffolding in `../../work/`. Write all plans, reports, logs, and summaries to `../../description/`. Keep both folders empty before an actual project starts; framework maintenance must not generate project outputs.
 - Commands below are examples run from the target root (`../../work/`), after dependencies are installed. Prefer existing scripts and pinned tools. Do not install every supporting tool.
 - All stack sections remain readable for switching without edits. Unselected sections are inactive; no role executes them. Unknown stacks require a documented capability extension before proceeding.
 
@@ -124,4 +125,5 @@ For manual QA, exercise the running service, CLI, or UI and record runtime and p
 - [ ] Selected commands, prerequisites, results, and limitations are recorded.
 - [ ] No credentials, dependency caches, or generated environments enter the delivery.
 - [ ] Role success criteria are met or explicit blockers are returned.
-- [ ] Per-member summary is ready before user review.
+- [ ] Reports are in `../../description/`; project files are in `../../work/`.
+- [ ] Per-member summary is ready before user review; cleanup preserves project and reports.

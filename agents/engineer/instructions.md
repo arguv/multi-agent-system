@@ -15,15 +15,21 @@ Read `../../workflow.md` and the current task before acting. If the stack is mis
 
 ## When This Role Activates
 Environment readiness is accepted and implementation is assigned.
-Respect lifecycle gates; a role assignment never overrides the user start or completion gate.
+Respect lifecycle gates. Before an actual user project starts, keep `../../work/` and `../../description/` empty; discuss requirements in chat. Framework maintenance does not populate these output folders.
 
 ## Inputs
-Report names here resolve under `../../description/`; project source, tests, manifests, and configuration live under `../../work/`: task.md, architecture.md, environment.md; review and QA findings.
-The authoritative task is `../../description/task.md`; handoffs are in `../../description/handoffs.md`.
+- `../../description/task.md`
+- `../../description/architecture.md`
+- `../../description/environment.md`
+- `../../description/review.md`
+Read existing production code and tests in `../../work/` and available QA findings.
+Missing reports are expected before their producing stage; request required inputs rather than inventing them.
 
 ## Outputs
-Report names here resolve under `../../description/`; project source, tests, manifests, and configuration live under `../../work/`: implementation.md, change-set.md; production code in ../../work/.
-Write `../../description/engineer.md` before delivery, with changes, evidence, limitations, and follow-up actions.
+- `../../description/implementation.md`
+- `../../description/change-set.md`
+Write production code directly into `../../work/`, preserving its native project layout.
+Write `../../description/engineer.md` before delivery with changes, evidence, limitations, and follow-up actions.
 
 ## Success Criteria
 Acceptance criteria have implemented behavior; core and boundary tests pass; implementation and test changes are ready together for review.

@@ -74,9 +74,29 @@ def validate(root):
             content = path.read_text()
             if re.search(r'(?:/home/|/Users/|[A-Z]:\\|plugin://|app://)', content):
                 errors.append(f'{path.relative_to(root)}: nonportable reference')
+    # Output directories are optional before a task starts; never create task outputs here.
+    documents = [root / name for name in ('README.md', 'AGENTS.md', 'workflow.md')]
+    documents += list((root / 'agents').rglob('*.md'))
+    documents += list((root / 'adapters').glob('*.md'))
+    stale_reports = re.compile(
+        r'work/(?:delivery(?:/|\b)|(?:task|status|handoffs|architecture|environment|'
+        r'implementation|change-set|test-plan|review|closure)\.md|reports/|'
+        r'manual-qa/(?:plan\.md|results/))')
+    for path in documents:
+        if not path.is_file():
+            continue
+        content = path.read_text()
+        label = path.relative_to(root).as_posix()
+        if stale_reports.search(content):
+            errors.append(f'{label}: obsolete project/report layout')
+        project_path = '../../work/' if path.parent.parent.name == 'agents' else (
+            '../work/' if path.parent.name == 'adapters' else 'work/')
+        report_path = project_path.replace('work/', 'description/')
+        if project_path not in content or report_path not in content:
+            errors.append(f'{label}: missing project/report folder contract')
     for path in (root / 'work', root / 'description'):
-        if not path.is_dir():
-            errors.append(f'{path.relative_to(root)}: missing directory')
+        if path.exists() and not path.is_dir():
+            errors.append(f'{path.relative_to(root)}: output path must be a directory')
     return errors
 
 
@@ -86,4 +106,4 @@ if __name__ == '__main__':
     if errors:
         print('\n'.join(errors))
         sys.exit(1)
-    print('PASS: 8 role pairs; metadata, instruction limits, 4 stacks, references, workflow contracts, and working directories')
+    print('PASS: 8 role pairs; metadata, instruction limits, 4 stacks, references, workflow contracts, and project/report folder layout')

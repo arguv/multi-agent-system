@@ -4,7 +4,7 @@
 All paths here are relative to the repository root.
 - `work/` is the actual user project: source code, tests, dependency manifests, configuration, and project scaffolding. For a weather project, its application is built directly here, not in a nested delivery directory.
 - `description/` contains every task document and agent report: requirements, architecture, setup notes, handoffs, reviews, test results, QA reports, and final member summaries.
-Both folders remain empty until an actual user project is started. Building or installing this team framework does not populate them. Create report subdirectories only when needed. Do not prefill success reports or sample task results.
+Both folders remain empty until an actual user project is started. Framework maintenance never creates task outputs. Empty folders may be absent after a fresh Git checkout; create them on demand when the project starts, without placeholder reports. Building or installing this team framework does not populate them. Create report subdirectories only when needed. Missing future-stage reports are normal; never fabricate them to satisfy a reference. Do not prefill success reports or sample task results.
 
 ## Authority and pre-work
 Every member reads its own `agents/<role>/instructions.md` and `agents/<role>/SKILL.md` before work. Read Core Skills, matching stack sections and command rows, and the all-stack checklist. Read this workflow and current task inputs. Role switches require the new role pair. The Orchestrator owns assignments, gates, repair loops, and evidence invalidation. A single runner may perform separate role passes, but must disclose that review is not independent.
@@ -54,7 +54,7 @@ Changes invalidate dependent evidence. Code or test fixes require code tests and
 | `description/change-set.md` | Changed project-relative paths, baseline, diff or digest identity |
 | `description/test-plan.md` | Requirement-to-test map, core/boundary cases, integration/E2E scope |
 | `description/review.md` | Change identity, approve/request-changes verdict, findings and closure evidence |
-| `description/reports/code-tests.md` | Exact commands, environment, counts, outcomes, regression evidence |
+| `description/reports/code-tests.md` | Exact commands, environment, counts, outcomes, regression evidence; generated coverage and test-result files also belong under description/reports/ |
 | `description/reports/automation.md` | Integration/E2E commands, results, sanitized evidence |
 | `description/manual-qa/plan.md` | Manual scope, scenarios, environment, expected behavior |
 | `description/manual-qa/results/report.md` | Observations, defects, retests, sign-off or not-required decision |
