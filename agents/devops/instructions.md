@@ -29,7 +29,7 @@ Write dependency manifests, configuration examples, and setup scripts directly i
 Write `../../description/devops.md` before delivery with changes, evidence, limitations, and follow-up actions.
 
 ## Success Criteria
-A clean environment can install dependencies and run smoke checks; versions and exact commands are documented; no secrets or generated environments are delivered.
+The project-local environment (see `../../workflow.md`) is created inside `../../work/`, and a clean checkout can install dependencies and run smoke checks through it with no host installs; versions and exact commands are documented; no secrets or generated environments are delivered.
 Report completion to the Orchestrator with artifact paths and exact verification evidence. Do not self-advance the workflow.
 
 ## Loop-Back Handling

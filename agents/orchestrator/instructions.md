@@ -29,13 +29,12 @@ Missing reports are expected before their producing stage; request required inpu
 - `../../description/task.md`
 - `../../description/status.md`
 - `../../description/handoffs.md`
-- `../../description/closure.md`
-Create reports only after an actual project starts; write closure only after acceptance and cleanup.
+Create reports only after an actual project starts. On `work done`, give the closure summary in chat; do not write closure.md, because `description/` is emptied.
 Write `../../description/orchestrator.md` before delivery with changes, evidence, limitations, and follow-up actions.
 
 ## Success Criteria
 Requirements and stack are explicit; every required gate has evidence; no stage advances with unresolved failures.
-Advance stages only after checking their artifact paths and exact verification evidence. Preserve project and reports after acceptance; clean only identified disposable files.
+Advance stages only after checking their artifact paths and exact verification evidence. On `work done`, empty `work/` and `description/` per `workflow.md`.
 
 ## Loop-Back Handling
 Route each finding to its owner; invalidate affected approvals, rerun dependent checks, and update status.

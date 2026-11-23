@@ -10,6 +10,7 @@ description: "Senior Code Reviewer stack-specific capabilities. Covers PHP (PHPU
 - Inspect the complete change set and test adequacy; verify authorization, data handling, dependency risk, and regressions. Use critical/high/medium/low severity; critical/high block, medium blocks unless explicitly accepted by the Orchestrator with rationale, low may be tracked.
 - Follow `../../workflow.md`; report evidence and blockers without inventing results.
 - Build source, tests, and scaffolding in `../../work/`. Write all plans, reports, logs, and summaries to `../../description/`. Keep both folders empty before an actual project starts; framework maintenance must not generate project outputs.
+- Project-local environment: every runtime, dependency, cache, and tool the project needs lives inside `../../work/` or in a container started from files in `../../work/`. Never install packages on the host (no `sudo`, global `pip`/`npm -g`/`composer global`, or `apt`) and never depend on host language versions. Stack mechanisms: PHP uses Docker (`Dockerfile` + `compose.yaml` + `dev` wrapper); Python uses `.venv`; Go uses a project-local `GOPATH`/`GOMODCACHE`; JS/TS uses local `node_modules` with a pinned Node. Run every install, test, and serve command through that mechanism. If the mechanism is unavailable (for example the Docker daemon is unreachable), stop and report the exact blocker to the Orchestrator instead of falling back to host installs.
 - Commands below are examples run from the target root (`../../work/`), after dependencies are installed. Prefer existing scripts and pinned tools. Do not install every supporting tool.
 - PHP is the active application stack. Python, Go, JS/TS, and framework-maintenance Markdown sections are preserved inside HTML comments and must not be used for this PHP project. To switch later, uncomment the selected section and command row, and comment the previously active ones. Unknown stacks require a documented capability extension before proceeding.
 
@@ -29,13 +30,13 @@ A text editor and dependency-free structural checks. Read-through scenarios vali
 
 ## PHP Stack
 ### Environment
-PHP 8.3+ and Composer; use repository version constraints. Run `composer install`.
+Docker is the project-local environment. DevOps writes `Dockerfile` (pinned PHP version and required extensions, Composer included), `compose.yaml`, and a `dev` wrapper script into `../../work/`, so `./dev <command>` runs `docker compose run --rm app <command>` with `../../work/` mounted. Use PHP 8.3+ unless the repository constrains otherwise. Dependencies install into `work/vendor`. Check `docker info` first; if the daemon is unreachable, report the blocker (do not install PHP on the host). Install with `./dev composer install`.
 ### Primary Test Framework
 PHPUnit: `vendor/bin/phpunit`; one file: `vendor/bin/phpunit tests/ExampleTest.php`; selection: `vendor/bin/phpunit --filter testName`.
 ### Supporting Tools
 Mockery, Codeception, or Pest when already selected; PHPStan and PHP_CodeSniffer when configured.
 ### Role Application
-Composer manifests and lock file; `.env.example` without secrets; PHP runtime/extensions and service setup documented.
+Composer manifests and lock file; `.env.example` without secrets; `Dockerfile`, `compose.yaml`, and the `dev` wrapper committed in `work/`; PHP version, extensions, and service setup documented.
 Apply the role's Core Skills to this stack. Use framework-specific setup only when selected in the architecture.
 For automation, run integration/E2E tools appropriate to the product; code-level tests alone do not establish end-to-end acceptance.
 For manual QA, exercise the running service, CLI, or UI and record runtime and platform versions.
@@ -47,7 +48,7 @@ For manual QA, exercise the running service, CLI, or UI and record runtime and p
 <!-- Inactive: Python
 ## Python Stack
 ### Environment
-Python 3.10+; use repository constraints. Run `python -m venv .venv`, activate with `. .venv/bin/activate` (POSIX), then `python -m pip install -r requirements.txt`.
+Python 3.10+; use repository constraints. Everything stays in `../../work/`: never use system `pip`. Run `python -m venv .venv`, activate with `. .venv/bin/activate` (POSIX), then `python -m pip install -r requirements.txt`.
 ### Primary Test Framework
 pytest: `python -m pytest`; verbose: `python -m pytest -v`; one file: `python -m pytest tests/test_example.py`; coverage with pytest-cov: `python -m pytest --cov=package`.
 ### Supporting Tools
@@ -66,7 +67,7 @@ For manual QA, exercise the running service, CLI, or UI and record runtime and p
 <!-- Inactive: Go
 ## Go Stack
 ### Environment
-Go 1.21+; follow the go.mod directive. Run `go mod download` and `go build ./...`.
+Go 1.21+; follow the go.mod directive. Keep caches in `../../work/`: `export GOPATH=$PWD/.cache/go GOMODCACHE=$PWD/.cache/go/mod GOBIN=$PWD/.cache/bin` (document in a script, ignore `.cache/`). Run `go mod download` and `go build ./...`.
 ### Primary Test Framework
 Standard testing in `*_test.go`: `go test ./...`; selection: `go test ./path -run TestName`; race detection where supported: `go test -race ./...`.
 ### Supporting Tools
@@ -103,7 +104,7 @@ Illustrative structure: replace `Normalize` with the project's real API and impo
 <!-- Inactive: JS/TS
 ## JS/TS Stack
 ### Environment
-Use the repository Node.js version and package manager. With a package-lock.json use `npm ci`; for a new npm project use `npm install` and retain the lock file.
+Use the repository Node.js version and package manager. Pin Node (`.nvmrc` and `engines`), install only into local `node_modules` (no global installs, run tools with `npx`); if the pinned Node is not available, run it from a `node:<version>` Docker image through a `dev` wrapper. With a package-lock.json use `npm ci`; for a new npm project use `npm install` and retain the lock file.
 ### Primary Test Framework
 Vitest or Jest as selected by the repository; expose `npm test`. Vitest file: `npx vitest run tests/example.test.ts`; Jest file: `npx jest tests/example.test.ts`.
 ### Supporting Tools
@@ -122,7 +123,7 @@ For manual QA, exercise the running service, CLI, or UI and record runtime and p
 ## Tooling Commands (quick reference)
 | Stack | Install deps | Run tests | Lint / check |
 | --- | --- | --- | --- |
-| PHP | `composer install` | `vendor/bin/phpunit` | configured PHPStan / PHP_CodeSniffer commands |
+| PHP | `./dev composer install` | `./dev vendor/bin/phpunit` | `./dev` + configured PHPStan / PHP_CodeSniffer commands |
 
 <!-- Inactive stack commands
 | Python | `python -m pip install -r requirements.txt` | `python -m pytest` | `python -m ruff check .` if installed |
@@ -137,4 +138,4 @@ For manual QA, exercise the running service, CLI, or UI and record runtime and p
 - [ ] No credentials, dependency caches, or generated environments enter the delivery.
 - [ ] Role success criteria are met or explicit blockers are returned.
 - [ ] Reports are in `../../description/`; project files are in `../../work/`.
-- [ ] Per-member summary is ready before user review; cleanup preserves project and reports.
+- [ ] Per-member summary is ready before user review; `work done` empties `work/` and `description/`, so reports are final before delivery.

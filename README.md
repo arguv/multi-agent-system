@@ -7,13 +7,13 @@ A portable Markdown team for feature work, bug fixes, and new projects. Eight se
 2. Describe the task, target repository, acceptance criteria, constraints, and stack. The Orchestrator collects requirements first; PHP is currently active.
 3. Send `work start` to begin the gated workflow.
 4. Review the delivered changes, evidence, and eight summaries in `description/`.
-5. Send `work done` to accept delivery and authorize safe cleanup.
+5. Send `work done` to accept delivery. This immediately empties both `work/` and `description/`, so copy or commit anything you want to keep first.
 
-Architecture → environment → implementation with code-level tests → review → automated QA → manual QA when required → delivery → user acceptance → cleanup. Failed stages return to the responsible member and repeat; downstream evidence is renewed after changes.
+Architecture → environment → implementation with code-level tests → review → automated QA → manual QA when required → delivery → user acceptance → cleanup (both output folders emptied). Failed stages return to the responsible member and repeat; downstream evidence is renewed after changes.
 
 Each member reads its own `instructions.md` and `SKILL.md` before working. Instructions remain stack-independent. Skills contain shared capabilities and selectable PHP, Python, Go, and JS/TS sections. PHP is currently active. Python, Go, and JS/TS sections and their command rows are commented out in each toolbox. To switch stacks, uncomment the desired sections and rows and comment the previous stack; role instructions stay unchanged.
 
-See `workflow.md` for artifact paths, gates, stage criteria, cleanup, and optional integration into another repository. The actual user project lives in `work/`. Every report, plan, review, test result, and member summary lives in `description/`. Both folders are empty before a user project starts. Cleanup preserves the project and reports.
+See `workflow.md` for artifact paths, gates, stage criteria, cleanup, and optional integration into another repository. The actual user project lives in `work/`. Every report, plan, review, test result, and member summary lives in `description/`. Both folders are empty before a user project starts. On `work done`, both folders are emptied.
 
 ## Loading into a runner
 Use the thin notes in `adapters/`. The default Orchestrator entry depends on the runner loading the root `AGENTS.md`. Opening a folder alone does not execute a task; send your project description in chat. For runners without discovery, configure the adapter to load the root entry once rather than repeating startup instructions in each project request. A single runner can perform separate role passes with recorded handoffs; it must disclose that review was not independent.
@@ -24,6 +24,6 @@ Run `python3 scripts/validate.py` from the repository root. It checks role metad
 ## Output example
 For a weather application, source files such as `work/src/` and tests such as `work/tests/` belong to the project. Its architecture report is `description/architecture.md`, code-test results are `description/reports/code-tests.md`, and manual QA results are `description/manual-qa/results/report.md`. These are example paths, not files to create before the project starts.
 
-Framework installation and maintenance leave both output folders empty. Requirements collection stays in chat until work start. Create report directories on demand, never prefill results, and preserve the completed project and reports after work done.
+Framework installation and maintenance leave both output folders empty. Requirements collection stays in chat until work start. Create report directories on demand, never prefill results, and expect both folders to be emptied on work done.
 
 The output folders may not exist after a fresh Git checkout because Git does not track empty directories. The Orchestrator creates them when a user project starts; placeholder files are not required.
