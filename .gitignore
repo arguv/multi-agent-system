@@ -40,3 +40,20 @@ Thumbs.db
 # Keep work evidence, delivered code, summaries, and dependency lock files tracked.
 # work/ holds the project; description/ holds all reports. Neither folder is ignored.
 # Cleanup follows workflow.md and preserves both sets of delivered outputs.
+
+# Runner and editor tool state (not part of the framework)
+.claude/
+agents/.claude/
+.idea
+.vscode
+.mcp.json
+
+# Local shell and git dotfiles injected by the environment
+.bash_profile
+.bashrc
+.profile
+.zprofile
+.zshrc
+.gitconfig
+.gitmodules
+.ripgreprc
